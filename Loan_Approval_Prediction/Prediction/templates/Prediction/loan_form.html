@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Approval Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; }
+        .container { max-width: 500px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        h2 { text-align: center; margin-bottom: 24px; }
+        label { display: block; margin-top: 12px; }
+        input, select { width: 100%; padding: 8px; margin-top: 4px; border-radius: 4px; border: 1px solid #ccc; }
+        button { margin-top: 20px; width: 100%; padding: 10px; background: #007bff; color: #fff; border: none; border-radius: 4px; font-size: 16px; }
+        .result { margin-top: 20px; text-align: center; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Loan Approval Prediction</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="income_annum">Annual Income:</label>
+            <input type="number" step="any" name="income_annum" required>
+
+            <label for="loan_amount">Loan Amount:</label>
+            <input type="number" step="any" name="loan_amount" required>
+
+            <label for="loan_term">Loan Term (months):</label>
+            <input type="number" name="loan_term" required>
+
+            <label for="cibil_score">CIBIL Score:</label>
+            <input type="number" name="cibil_score" required>
+
+            <label for="residential_assets_value">Residential Assets Value:</label>
+            <input type="number" step="any" name="residential_assets_value" required>
+
+            <label for="commercial_assets_value">Commercial Assets Value:</label>
+            <input type="number" step="any" name="commercial_assets_value" required>
+
+            <label for="luxury_assets_value">Luxury Assets Value:</label>
+            <input type="number" step="any" name="luxury_assets_value" required>
+
+            <label for="bank_asset_value">Bank Asset Value:</label>
+            <input type="number" step="any" name="bank_asset_value" required>
+
+
+
+            <button type="submit">Predict</button>
+        </form>
+        {% if result %}
+            <div class="result">
+                <strong>Prediction:</strong> {{ result }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
